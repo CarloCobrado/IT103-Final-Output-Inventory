@@ -11,12 +11,12 @@ public class ItemData {
 
     public ItemData(String name) {
         this.name = name;
-        this.description = "";
+        this.description = "N/A";
         this.price = 0f;
         this.quantity = 0;
         this.reorder = false;
         this.reorderQuantity = 0;
-        this.reorderDate = "";
+        this.reorderDate = "N/A";
         this.discontinued = false;
     }
 
@@ -32,6 +32,10 @@ public class ItemData {
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
 
+    public float getItemValue() {
+        return price * quantity;
+    }
+
     public boolean isReorder() { return reorder; }
     public void setReorder(boolean reorder) { this.reorder = reorder; }
 
@@ -45,14 +49,15 @@ public class ItemData {
     public void setDiscontinued(boolean discontinued) { this.discontinued = discontinued; }
 
     @Override //Sets format for viewing inventory
-    public String toString() {
+		public String toString() {
         return "Name: " + name + 
                ", Description: " + description +
                ", Price: $" + price + 
                ", Quantity: " + quantity +
+               ", Value: " + "$" + getItemValue() +
                ", Reorder: " + reorder +
                ", Reorder Quantity: " + reorderQuantity +
                ", Reorder Date: " + reorderDate +
                ", Discontinued: " + discontinued;
-    }
+		}
 }
