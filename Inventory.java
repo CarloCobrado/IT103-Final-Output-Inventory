@@ -265,7 +265,7 @@ public class Inventory {
                         int NewQuantity = input.nextInt();
                         input.nextLine();
                         CurrentItemData.setQuantity(NewQuantity);
-                        System.out.println("There are " + NewQuantity + " " + CurrentItemData.getName() + " in currently in stock.");
+                        System.out.println("There are " + NewQuantity + " " + CurrentItemData.getName() + " currently in stock.");
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Invalid quantity. Please try again.");
@@ -278,7 +278,7 @@ public class Inventory {
                     String NewReorder = input.nextLine().toLowerCase();
                     if (NewReorder.equals("true") || NewReorder.equals("false")) {
                         CurrentItemData.setReorder(Boolean.parseBoolean(NewReorder));
-                        System.out.println("Reorder of " + CurrentItemData.getName() + " is " + NewReorder);
+                        System.out.println("Reorder of " + CurrentItemData.getName() + " is set to " + NewReorder);
                     }
                     else {
                         System.out.println("Invalid input. Please enter 'true' or 'false'.");
@@ -323,7 +323,7 @@ public class Inventory {
                     String NewDiscontinued = input.nextLine().toLowerCase();
                     if (NewDiscontinued.equals("true") || NewDiscontinued.equals("false")) {
                         CurrentItemData.setDiscontinued(Boolean.parseBoolean(NewDiscontinued));
-                        System.out.println("Discontinuation of " + CurrentItemData.getName() + " is " + NewDiscontinued);
+                        System.out.println("Discontinuation of " + CurrentItemData.getName() + " is set to " + NewDiscontinued);
                     }
 
                     else {
