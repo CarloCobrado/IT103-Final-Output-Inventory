@@ -1,0 +1,7 @@
+Code,Name,Description,Price,Quantity,Reorder,ReorderQuantity,ReorderDate,Discontinued
+1,"Apple","Red Fruit",15.00,50,true,100,2025-05-25,false,
+2,"Orange","Orange Fruit",18.00,40,true,80,2025-05-28,false,
+3,"Banana","Yellow Fruit",13.00,35,true,80,2025-06-04,false,
+4,"Kiwi","Green Fruit",24.00,15,false,0,N/A,true,
+5,"Blueberry","Blue Fruit",28.00,20,false,0,N/A,false,
+6,"Grapes","Purple Fruit",25.00,80,true,80,2025-06-25,false,
