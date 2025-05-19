@@ -1046,7 +1046,7 @@ public class Inventory {
         try (FileWriter ReportWriter = new FileWriter(FileName)) {
             ReportWriter.write(String.format("%-6s %-20s %-30s %-10s %-10s %-10s %-12s%n",
                     "Code", "Name", "Description", "Price", "Quantity", "Value", "Discontinued?"));
-            ReportWriter.write("------------------------------------------------------------------------------------------------------------------------\n");
+            ReportWriter.write("-----------------------------------------------------------------------------------------------------------\n");
 
             for (Map.Entry<Integer, ItemData> entry : inventory.entrySet()) {
                 int ItemCode = entry.getKey();
