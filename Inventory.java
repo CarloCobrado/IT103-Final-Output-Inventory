@@ -1,15 +1,15 @@
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Map;
-import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Inventory {
     public static void main(String[] args) {
@@ -107,7 +107,7 @@ public class Inventory {
         String FileName = input.nextLine();
 
         try (BufferedReader Loader = new BufferedReader(new FileReader(FileName))) {
-        String line = Loader.readLine();
+            String line = Loader.readLine();
 
             while ((line = Loader.readLine()) != null) {
                 String[] parts = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
@@ -194,7 +194,7 @@ public class Inventory {
         }
         
         System.out.print("Please enter Item Code to edit: ");
-        int ItemCode = -1;
+        int ItemCode;
         try {
             ItemCode = input.nextInt();
             input.nextLine();
@@ -225,7 +225,7 @@ public class Inventory {
             System.out.println("8. Discontinued?");
             System.out.println("9. Quit");
             System.out.print("Enter your Choice: ");
-            int DataEditChoice = 0;
+            int DataEditChoice;
 
             try {
                 DataEditChoice = input.nextInt();
@@ -343,7 +343,6 @@ public class Inventory {
             catch (InputMismatchException e) {
                 System.out.println("Invalid option. Please try again.");
                 input.nextLine();
-                continue;
             }
         }
     }
@@ -366,7 +365,7 @@ public class Inventory {
             System.out.println("2. Quit:");
             System.out.print("Enter your Choice: ");
 
-            int ViewInventoryChoice = 0;
+            int ViewInventoryChoice;
             try {
                 ViewInventoryChoice = input.nextInt();
                 input.nextLine();
@@ -394,7 +393,7 @@ public class Inventory {
                     System.out.println("11. Exit filter?");
                     System.out.print("Enter your Choice: ");
 
-                    int ViewInventoryFilter = 0;
+                    int ViewInventoryFilter;
 
                     try {
                         ViewInventoryFilter = input.nextInt();
@@ -1046,7 +1045,7 @@ public class Inventory {
 
         try (FileWriter ReportWriter = new FileWriter(FileName)) {
             ReportWriter.write(String.format("%-6s %-20s %-30s %-10s %-10s %-10s %-12s%n",
-                    "Code", "Name", "Description", "Price", "Quantity", "Value", "Discontinued"));
+                    "Code", "Name", "Description", "Price", "Quantity", "Value", "Discontinued?"));
             ReportWriter.write("------------------------------------------------------------------------------------------------------------------------\n");
 
             for (Map.Entry<Integer, ItemData> entry : inventory.entrySet()) {
@@ -1056,7 +1055,7 @@ public class Inventory {
                 int Quant = ItemReportStock.getQuantity();
                 float Value = Price * Quant;
 
-                ReportWriter.write(String.format("%-6s %-20s %-30s %-10.2f %-10d %-10.2f %-12s%n",
+                ReportWriter.write(String.format("%-6d %-20s %-30s %-10.2f %-10d %-10.2f %-12s%n",
                     ItemCode,
                     ItemReportStock.getName(),
                     ItemReportStock.getDescription(),
@@ -1088,7 +1087,7 @@ public class Inventory {
                         String ReorderDate = ItemReportReorder.getReorderDate();
                         int ReorderQuant = ItemReportReorder.getReorderQuantity();
 
-                        ReportWriter.write(String.format("%-6s %-20s %-30s %-15s %-12s%n",
+                        ReportWriter.write(String.format("%-6d %-20s %-30s %-15s %-12d%n",
                             ItemCode,
                             ItemReportReorder.getName(),
                             ItemReportReorder.getDescription(),
@@ -1139,6 +1138,6 @@ public class Inventory {
         if (input.contains(",") || input.contains("\"")) {
             return "\"" + input.replace("\"", "\"\"") + "\"";
         }
-      	return input;
+        return input;
     }
 }
